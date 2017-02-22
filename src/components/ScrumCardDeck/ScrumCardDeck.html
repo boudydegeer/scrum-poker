@@ -1,0 +1,57 @@
+<div class="ScrumCardDeck">
+    <div class="PlayBoard">
+        <transition name="drop-card">
+            <card class="SelectedCard"
+                  :class="swipe"
+                  :value="selected.value"
+                  :label="selected.label"
+                  :lock="true"
+                  :rotate="true"
+                  v-if="selected"
+                  @click="unselect('down')"
+                  @swipeleft="unselect('left')"
+                  @swiperight="unselect('right')"
+                  @swipedown="unselect('down')"
+                  @swipeup="unselect('down')"
+            >
+            </card>
+        </transition>
+        <transition name="fade">
+            <div class="ReferenceStories" v-if="preselected">
+                <md-toolbar>
+                    <h2 class="md-title" style="flex: 1">
+                        Reference Stories
+                    </h2>
+                    <md-button class="md-icon-button" id="profile" @click="preselected = null">
+                        <md-icon>clear</md-icon>
+                    </md-button>
+                </md-toolbar>
+                <div class="Stories">
+                    <ul>
+                        <li v-for="referenceStory in referenceStoriesForPreselected"
+                           class="ReferenceStory">
+                            {{referenceStory}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </transition>
+
+    </div>
+    <div class="DeckWrapper">
+        <div class="Deck">
+            <card v-for="card in cards"
+                  :value="card.value"
+                  :label="card.label"
+                  :lock="true"
+                  :rotate="true"
+                  :speed="card*0.5"
+                  @click="preselectCard(card)"
+                  @swipedown="preselectCard('none')"
+                  @swipeup="preselectCard(card)"
+                  :class="{'preselected': preselected && card.label == preselected.label}"
+            ></card>
+        </div>
+    </div>
+    <!--<div class="ScrollingArea">Scrolling area</div>-->
+</div>

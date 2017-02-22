@@ -1,0 +1,44 @@
+<div>
+    <md-toolbar>
+        <h2 class="md-title" style="flex: 1">
+            Scrum Poker
+            <span v-if="!needsProfile && $isDesk"> • {{me.name}} {{me.team | uppercase}}</span>
+        </h2>
+        <md-button class="md-icon-button" id="profile" @click="openDialog('Profile')">
+            <md-icon>account_circle</md-icon>
+        </md-button>
+    </md-toolbar>
+
+    <board v-if="$isDesk"></board>
+    <deck v-if="$isPhone" :cards="cards"></deck>
+
+    <md-dialog md-open-from="#profile"
+               md-close-to="#profile" ref="Profile" md-theme="app"
+               :md-click-outside-to-close="false"
+               :md-esc-to-close="false">
+        <md-dialog-title>Change your profile</md-dialog-title>
+        <md-dialog-content>
+            <form @submit.prevent="saveProfile">
+                <md-input-container v-if="$isPhone" :class="{'md-input-invalid': error}">
+                    <label>Name</label>
+                    <md-input v-model="profileForm.name"></md-input>
+                    <span class="md-error" v-if="error">{{error}}</span>
+                </md-input-container>
+
+                <md-input-container :class="{'md-input-invalid': error}">
+                    <label>Team</label>
+                    <md-select name="team" id="team" v-model="profileForm.team">
+                        <md-option :value="team.value" v-for="team in teams">{{team.label}}</md-option>
+                    </md-select>
+                    <span class="md-error" v-if="error">{{error}}</span>
+                </md-input-container>
+            </form>
+        </md-dialog-content>
+
+        <md-dialog-actions>
+            <md-button class="md-primary" @click="closeDialog('Profile')">Cancel</md-button>
+            <md-button class="md-primary" @click="saveProfile">Save</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+
+</div>

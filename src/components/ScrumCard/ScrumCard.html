@@ -1,0 +1,12 @@
+<div class="ScrumCard" :style="rotationStyle" @click="select">
+    <v-touch @panup="onSwipeUp" @panright="onSwipeRight" @pandown="onSwipeDown" @panleft="onSwipeLeft"
+             :options="{ touchAction: 'auto' }"
+    >
+        <div class="Face__back" :class="classes.backFace"></div>
+        <div class="Face__front" :class="classes.frontFace">
+            <span v-if="value" v-text="" class="Card__Value"></span>
+        </div>
+        <div class="Face__umbra" :class="classes.umbra"></div>
+        <div class="Face__penumbra" :class="classes.penumbra"></div>
+    </v-touch>
+</div>

@@ -1,0 +1,40 @@
+<div class="ScrumPokerBoard">
+    <md-layout md-column md-gutter>
+        <md-layout md-flex="5" class="Controls">
+            <md-button class="md-primary md-raised"
+                       @click="rotateAll()"
+                       :disabled="!hasEstimations || allCardsAreTurned">
+                Rotate All
+            </md-button>
+            <md-button class="md-primary md-raised"
+                       @click="clearBoard()"
+                       :disabled="!hasEstimations"
+            >
+                Clear Board
+            </md-button>
+        </md-layout>
+        <md-layout md-flex="10" class="Points">
+            <p class="md-display-1">
+                <span v-if="showPoints">
+                    Average points  <br> {{averagePoints}}
+                </span>
+                <span v-if="noEstimationPossible">
+                    No estimation possible
+                </span>
+            </p>
+        </md-layout>
+        <md-layout class="Estimations" md-aling="center">
+            <md-layout v-for="card in players" md-aling="center" md-row>
+                <div class="PLaceholder">
+                    <card :value="card.value"
+                          :label="card.label"
+                          :rotate="card.rotate"
+                          :speed="card*0.5"
+                          @click="rotateCard(card)" v-if="card">
+                    </card>
+                    <span class="PlayerName md-title"> {{card.name}} </span>
+                </div>
+            </md-layout>
+        </md-layout>
+    </md-layout>
+</div>

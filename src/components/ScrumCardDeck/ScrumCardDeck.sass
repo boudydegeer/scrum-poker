@@ -1,0 +1,122 @@
+$height: 350px
+$width: ($height / 1.46)
+$animation-speed: 1.2s
+
+.ScrumCardDeck
+  width: 100%
+  height: calc(100vh - 64px)
+  display: flex
+  flex-direction: column
+
+  .PlayBoard
+    width: 100%
+    flex: 2 1 90vh
+    display: flex
+    justify-content: center
+
+    .SelectedCard
+      margin-top: 1em
+
+  .DeckWrapper
+    flex: 1 0 22vh
+    overflow-y: hidden !important
+    overflow-x: scroll !important
+    width: 100%
+    height: 26vh
+    position: absolute
+    bottom: 0em
+    white-space: nowrap
+    z-index: 1
+    .Deck
+      white-space: nowrap
+      display: flex
+      justify-content: flex-start
+      width: 100%
+      bottom: -15em
+      white-space: nowrap
+      z-index: 1
+      position: absolute
+      .ScrumCard
+        transform: scale(.65) translate(0px, 0vh) !important
+        margin-left: -45px
+        overflow: visible !important
+        transition: all .5s
+
+        &.preselected
+          transform: scale(.65) translate(0px, -10vh) !important
+          transition: all .5s
+
+        &:not(:first-child)
+          margin-left: -125px
+
+.ReferenceStories
+  width: 100%
+  height: 100vh
+  position: absolute
+  display: block
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: #cccccc
+  font-size: 1.2em
+  color: #333333
+  .Stories
+    padding: 1em
+    li
+      margin-top: 1em
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+
+.fade-leave
+  opacity: 1
+  transition: all .3s ease
+
+.fade-leave-active
+  opacity: 0
+  transition: all .3s ease
+
+.fade-enter
+  opacity: 1
+  transition: all .3s ease
+
+.fade-enter-active
+  opacity: 0
+  transition: all .3s ease
+
+
+.drop-card-enter-active
+  transform: scale(0) translate(0, 1000vh)
+  animation: drop-card-in .5s
+
+.drop-card-leave-active
+  animation: drop-card-out .5s
+  &.left
+    animation: drop-card-out-left .5s
+  &.right
+    animation: drop-card-out-right .5s
+
+@keyframes drop-card-in
+  0%
+    transform: scale(0) translate(0, 1000vh)
+  80%
+    transform: scale(1) translate(0, 0)
+
+@keyframes drop-card-out-left
+  0%
+    transform: scale(1) translate(0, 0)
+  100%
+    transform: scale(.5) translate(-45em, -15em) rotate(-48deg)
+
+@keyframes drop-card-out-right
+  0%
+    transform: scale(1) translate(0, 0)
+  100%
+    transform: scale(.5) translate(45em, -15em) rotate(48deg)
+
+
+@keyframes drop-card-out
+  0%
+    transform: scale(1) translate(0, 0)
+  100%
+    transform: scale(.5) translate(0, 150vh) rotate(98deg)

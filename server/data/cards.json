@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "value": 1,
+      "label": "XXS"
+    },
+    {
+      "value": 2,
+      "label": "XS"
+    },
+    {
+      "value": 3,
+      "label": "S"
+    },
+    {
+      "value": 5,
+      "label": "M"
+    },
+    {
+      "value": 8,
+      "label": "L"
+    },
+    {
+      "value": 13,
+      "label": "XL"
+    },
+    {
+      "value": 20,
+      "label": "XXL"
+    },
+    {
+      "value": null,
+      "label": "ELEPHANT"
+    },
+    {
+      "value": null,
+      "label": "COFFEE"
+    },
+    {
+      "value": null,
+      "label": "QUESTION"
+    }
+  ]
+}

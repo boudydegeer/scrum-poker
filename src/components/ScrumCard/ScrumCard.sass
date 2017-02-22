@@ -1,0 +1,172 @@
+$height: 350px
+$width: ($height / 1.46)
+$animation-speed: 1.2s
+
+.ScrumCard
+  width: $width
+  height: $height
+  position: relative
+  perspective: 500px
+  border-radius: .1em
+  will-change: transform
+  flex: 0 0 ($height / 1.46)
+  .Face
+    &__front
+      background: #f3f3f3
+      transform: rotateY(180deg)
+      .Card__Value
+        font-size: 8em
+        color: #333
+
+      &--XXS
+        background: #f3f3f3 url('../../assets/front-face-XXS.svg') no-repeat center center
+      &--XS
+        background: #f3f3f3 url('../../assets/front-face-XS.svg') no-repeat center center
+      &--S
+        background: #f3f3f3 url('../../assets/front-face-S.svg') no-repeat center center
+      &--M
+        background: #f3f3f3 url('../../assets/front-face-M.svg') no-repeat center center
+      &--L
+        background: #f3f3f3 url('../../assets/front-face-L.svg') no-repeat center center
+      &--XL
+        background: #f3f3f3 url('../../assets/front-face-XL.svg') no-repeat center center
+      &--XXL
+        background: #f3f3f3 url('../../assets/front-face-XXL.svg') no-repeat center center
+      &--COFFEE
+        background: #f3f3f3 url('../../assets/front-face-COFFEE.svg') no-repeat center center
+      &--QUESTION
+        background: #f3f3f3 url('../../assets/front-face-QUESTION.svg') no-repeat center center
+      &--ELEPHANT
+        background: #f3f3f3 url('../../assets/front-face-ELEPHANT.svg') no-repeat center center
+
+      &--05
+        background: #f3f3f3 url('../../assets/front-face-0.5.svg') no-repeat center center
+      &--1
+        background: #f3f3f3 url('../../assets/front-face-1.svg') no-repeat center center
+      &--2
+        background: #f3f3f3 url('../../assets/front-face-3.svg') no-repeat center center
+      &--3
+        background: #f3f3f3 url('../../assets/front-face-3.svg') no-repeat center center
+      &--5
+        background: #f3f3f3 url('../../assets/front-face-5.svg') no-repeat center center
+      &--8
+        background: #f3f3f3 url('../../assets/front-face-8.svg') no-repeat center center
+      &--13
+        background: #f3f3f3 url('../../assets/front-face-13.svg') no-repeat center center
+      &--20
+        background: #f3f3f3 url('../../assets/front-face-20.svg') no-repeat center center
+
+    &__back
+      background: #437693 url('../../assets/back-face.svg') no-repeat center center
+      background-size: 115%
+
+
+    &__front, &__back
+      z-index: 100
+      backface-visibility: hidden
+      position: absolute
+      width: 100%
+      height: 100%
+      position: absolute
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: 8px
+      overflow: hidden
+    &--flip-in
+      z-index: 100
+      animation: flip-in $animation-speed forwards
+    &--flip-out
+      animation: flip-out $animation-speed forwards
+
+    &__umbra, &__penumbra
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      backface-visibility: visible
+      z-index: 99
+
+    &__umbra
+      width: ($width + 10px)
+      height:  ($height + 10px)
+      top: -5px
+      left: -5px
+      transform: translateY(2px)
+      background: url('../../assets/umbra.svg') center center no-repeat
+      background-size : cover
+      opacity: 0.3
+
+    &--change-umbra
+      animation: change-umbra $animation-speed forwards
+    &__penumbra
+      width: calc(100% + 70px)
+      height: calc(100% + 70px)
+      top: -35px
+      left: -35px
+      transform: translateY(2px)
+      background: url('../../assets/penumbra.svg') center center no-repeat
+      background-size: cover
+      opacity: 0
+    &--change-penumbra
+      animation: change-penumbra $animation-speed forwards
+
+
+
+@keyframes flip-in
+  0%
+    transform: translateZ(-200px) rotateY(0deg) scale(1.4)
+  33%
+    transform: translateZ(-100px) rotateY(0deg) scale(1.4)
+    offset: 0.15
+  66%
+    transform: translateZ(-100px) rotateY(180deg) scale(1.4)
+    offset: 0.65
+  100%
+    transform: translateZ(-200px) rotateY(180deg) scale(1.4)
+
+@keyframes flip-out
+  0%
+    transform: translateZ(-200px) rotateY(180deg) scale(1.4)
+  33%
+    transform: translateZ(-100px) rotateY(180deg) scale(1.4)
+    offset: 0.15
+  66%
+    transform: translateZ(-100px) rotateY(360deg) scale(1.4)
+    offset: 0.65
+  100%
+    transform: translateZ(-200px) rotateY(360deg) scale(1.4)
+
+
+@keyframes change-umbra
+  0%
+    opacity: 0.3
+    transform: translateZ(-201px) rotateY(0deg) scale(1.4)
+  33%
+    opacity: 0.0
+    transform: translateZ(-101px) rotateY(0deg) scale(1.4)
+    offset: 0.15
+  66%
+    opacity: 0.0
+    transform: translateZ(-101px) rotateY(180deg) scale(1.4)
+    offset: 0.65
+  100%
+    opacity: 0.1
+    transform: translateZ(-201px) rotateY(180deg) scale(1.4)
+
+@keyframes change-penumbra
+  0%
+    opacity: 0.0
+    transform: translateZ(-201px) rotateY(0deg) scale(1.4)
+  33%
+    opacity: 0.5
+    transform: translateZ(-101px) rotateY(0deg) scale(1.4)
+    offset: 0.15
+  66%
+    opacity: 0.5
+    transform: translateZ(-101px) rotateY(180deg) scale(1.4)
+    offset: 0.65
+  100%
+    opacity: 0.0
+    transform: translateZ(-201px) rotateY(180deg) scale(1.4)

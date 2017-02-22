@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "value": "team-a",
+      "label": "Team A"
+    },
+    {
+      "value": "team-b",
+      "label": "Team B"
+    }
+  ]
+}

@@ -9,7 +9,7 @@
 It allows us to estimate userstories in our team.
 
 
-![images/ScrumPoker.gif](images/ScrumPoker.gif)
+![images/ScrumPoker-Example.gif](images/ScrumPoker-Example.gif)
 
 This project is built with [Vue.js](https://vuejs.org) + [VueMaterial](https://vuematerial.github.io/#/)
 

@@ -66,3 +66,7 @@ npm run build
 
 This project is built on top of the official Vue.JS Webpack template. 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+# Credits
+Made with ❤️ by [@boudydegeer](https://twitter.com/boudydegeer), supported by [Coosto](https://www.coosto.com/en), [@coostodev](https://twitter.com/coostodev)
